@@ -24,6 +24,7 @@ def dump_index_data(start_date=None, end_date=None, skip_exists=True):
 
     for index_name in index_list:
         time_step = datetime.timedelta(days=15)
+        print(start_date)
         if start_date is None:
             index_info = pro.index_basic(ts_code=index_name)
             list_date = index_info["list_date"][0]

@@ -8,20 +8,20 @@ then
     curl -L https://github.com/dolthub/dolt/releases/latest/download/install.sh | bash
 fi
 
-mkdir -p $WORKING_DIR/dolt
+# mkdir -p $WORKING_DIR/dolt
 
-[ ! -d "$WORKING_DIR/dolt/investment_data" ] && cd $WORKING_DIR/dolt && dolt clone chenditc/investment_data
-[ ! -d "$WORKING_DIR/qlib" ] && git clone $QLIB_REPO "$WORKING_DIR/qlib"
+# [ ! -d "$WORKING_DIR/dolt/investment_data" ] && cd $WORKING_DIR/dolt && dolt clone chenditc/investment_data
+# [ ! -d "$WORKING_DIR/qlib" ] && git clone $QLIB_REPO "$WORKING_DIR/qlib"
 
 cd $WORKING_DIR/dolt/investment_data
-dolt pull origin
+# dolt pull origin
 dolt sql-server &
 
 # wait for sql server start
 sleep 5s
 
 cd $WORKING_DIR/investment_data
-mkdir -p ./qlib/qlib_source
+# mkdir -p ./qlib/qlib_source
 python3 ./qlib/dump_all_to_qlib_source.py
 
 export PYTHONPATH=$PYTHONPATH:$WORKING_DIR/qlib/scripts
