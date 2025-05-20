@@ -49,6 +49,7 @@ def dump_astock_data():
     # Sort from small to big, so that we process earlier date first
     trade_date_df = trade_date_df.sort_values("cal_date")
     for row in trade_date_df.values.tolist():
+    # for row in [['20250506']]:
         trade_date = row[0]
         if trade_date == latest_trade_date:
             continue
@@ -69,7 +70,8 @@ def dump_astock_data():
             "amount": "amount",
             "ts_code": "symbol"
         }
-        data = ts_data.rename(columns=column_mapping)[list(column_mapping.values())]      
+        data = ts_data.rename(columns=column_mapping)[list(column_mapping.values())]   
+        # print(data)   
         record_num = data.to_sql("ts_a_stock_eod_price", sqlEngine, if_exists='append', index=False)
         print(f"{trade_date} Updated: {record_num} records")
 

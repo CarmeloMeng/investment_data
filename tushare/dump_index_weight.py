@@ -7,7 +7,7 @@ import time
 import datetime
 
 ts.set_token(os.environ["TUSHARE"])
-pro=ts.pro_api()
+pro=ts.pro_api(os.environ["TUSHARE"])
 file_path = os.path.dirname(os.path.realpath(__file__))
 
 index_list = [
